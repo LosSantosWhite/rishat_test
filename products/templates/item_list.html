@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>Items list</title>
+    <script src="https://js.stripe.com/v3/"></script> 
+  </head>
+  <body>
+    <ul>
+    {% for item in items %}
+        <li>{{ item.name }}</li>
+        <li>{{ item.price }}</li>
+    {% endfor %}
+    </ul>
+  </body>

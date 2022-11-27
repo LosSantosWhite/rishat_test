@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 import stripe
 
 
@@ -49,3 +50,6 @@ class Item(models.Model):
         """
         stripe.Product.modify(str(self.id), active=False)
         super().delete(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("item_detail", kwargs={"pk": self.pk})
