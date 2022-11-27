@@ -9,7 +9,7 @@
     {% for item in items %}
         
         <li>
-            <a href="{{ item.absolute_url }}">{{ item.name }}</a>
+            <a href="{% url 'item_detail' item.pk %}">{{ item.name }}</a>
             <p>Price: {{ item.price }} cents</p>
         </li>
     {% endfor %}
