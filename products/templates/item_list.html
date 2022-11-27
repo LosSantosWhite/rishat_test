@@ -4,10 +4,14 @@
     <script src="https://js.stripe.com/v3/"></script> 
   </head>
   <body>
+    <h1>Items list</h1>
     <ul>
     {% for item in items %}
-        <li>{{ item.name }}</li>
-        <li>{{ item.price }}</li>
+        
+        <li>
+            <a href="{{ item.absolute_url }}">{{ item.name }}</a>
+            <p>Price: {{ item.price }} cents</p>
+        </li>
     {% endfor %}
     </ul>
   </body>

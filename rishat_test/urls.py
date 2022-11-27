@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from products.views import ItemView, StripeConfig
+from products.views import ItemView, StripeConfig, ItemList
 from django.views.generic import TemplateView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", ItemList.as_view(), name="items_list"),
     path("item/<int:pk>/", ItemView.as_view(), name="item_detail"),
     path("buy/<int:pk>/", StripeConfig.as_view()),
     path("success/", TemplateView.as_view(template_name="success.html")),

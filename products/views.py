@@ -1,11 +1,17 @@
 from django.shortcuts import get_object_or_404
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView, ListView
 from django.views import View
 from django.http.response import JsonResponse
 from django.conf import settings
 import stripe
 
 from products.models import Item
+
+
+class ItemList(ListView):
+    template_name = "item_list.html"
+    context_object_name = "items"
+    model = Item
 
 
 class ItemView(DeleteView):
