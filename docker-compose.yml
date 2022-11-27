@@ -3,20 +3,22 @@ version: '3.9'
 services:
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn rishat_test.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
       - "8000:8000"
-
-  test:
-    build: .
-    command: python manage.py test
-    volumes:
-      - .:/code
+    env_file:
+      - ./.env.dev
 
   filldb:
     build: .
     command: bash -c "python manage.py migrate && python manage.py loaddata fixtures.json"
     volumes:
       - .:/code
+  nginx:
+    build: ./nginx
+    ports:
+      - 1337:80
+    depends_on:
+      - web

@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-jlay2%!y#$pqf#%8#66_ckk#=0mf&101c&m0b36ml1u7d(8&)^"
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -130,6 +130,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Stripe keys
 
-STRIPE_PUBLISH_KEY = "pk_test_51M8Q7yFTRobWnUiPrNKdUVuIUdsuwOM7pDLK75ykaaHgyDDIBzQ3VCssz57t7Y096Sa9PVkHlkxGASr30vZm143r00K3QIaCKV"
-
-STRIPE_SECRET_KEY = "sk_test_51M8Q7yFTRobWnUiPMcyP9ozRYY8s7Qd94ZbmX0G4nogleLeoJluN0gRhvBt2mRo3aVyCvo03eSkGWMO6hABt6yaH00YGTphRcA"
+STRIPE_PUBLISH_KEY = os.environ.get("STRIPE_PUBLISH_KEY")
+STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY")

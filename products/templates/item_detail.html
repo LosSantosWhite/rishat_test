@@ -9,7 +9,6 @@
     <p>{{ item.description }}</p>
     <p>{{ item.price }}</p>
     <button id="buy-button">Buy</button>
-    <script src="{% static 'main.js' %}"></script>
     <script type="text/javascript">
       const stripe = Stripe('{{ stripe_publish_key }}');
       const buyButton = document.getElementById('buy-button');
